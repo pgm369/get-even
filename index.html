@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
-     <title>Title Case</title>
+     <title>Get Even</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/forms.css">
   <style>
-        #output{
+        #container{
             border-radius: 5px;
             min-height: 40px;
             border: 1px solid black;
@@ -20,7 +20,7 @@
  </head>
  <body>
      <header>
-     <h1 class="page-header">Title Case</h1>
+     <h1 class="page-header">Get Even</h1>
         <nav class="topnav" id="myTopnav">
             <a href="index.html" class="active">Home</a>
             <a href="#">Link</a>
@@ -32,8 +32,8 @@
    <main class="wrapper">
  <p><em>Through the adaptation and enhancement of my existing HTML template, I have successfully crafted a professional and versatile form template. This refined template incorporates a diverse range of form elements and meticulously designed styles, establishing a robust foundation for form-related assignments and future projects. The form template serves as an invaluable resource, streamlining the development process while ensuring a seamless user experience. </em></p>
     <h2 class="subheader">Place form code below:</h2>
-    <div id="output"> Output Goes Here </div>
-    <form method="post" action="" class="main-form">
+    <div id="output">
+    <form method="get" action="" class="main-form">
       <div>
         <label for="input">Input:</label><br>
         <input type="text" name="input" id="input" placeholder="input" required autofocus> 
@@ -55,16 +55,24 @@
   </main>
   <script src="js/main.js"></script>   
   <script>
-        const mySubmit = document.querySelector("#submit");
-        console.log(mySubmit);
 
-        mySubmit.addEventListener("click",function(ev){
-            ev.preventDefault();
-            const myInput = document.querySelector("#input");
-            const myOutput = document.querySelector("#output");
-            myOutput.innerHTML = myInput.value;
-            //alert(myInput.value);
-        });
+    
+    const queryString = window.location.search;
+    console.log(queryString);
+
+    const urlParams = new URLSearchParams(queryString);
+
+    if(queryString.length > 0){
+      //alert("data submitted!");
+      let myOutput = `<div id='container'>`;
+        if(urlParams.has("input")){
+         //alert(urlParams.has("input"));
+         let myInput = urlParams.get("input");
+         myOutput += `<p>You typed ${myInput}</p>`;
+        }
+        myOutput += `</div>`;
+        document.querySelector("#output").innerHTML = myOutput
+    }
         
   </script>
  </body>
