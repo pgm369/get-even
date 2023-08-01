@@ -31,7 +31,9 @@
      
    <main class="wrapper">
 
-    <p>This webpage titled "Get Even" is a responsive portal page that includes a form. Users can input a number into the form and submit it. The page will then determine if the input number is even or odd using JavaScript and display the result accordingly.</p>
+    <p>
+      This webpage titled "Get Even" is a responsive portal page that includes a form. Users can input a number into the form and submit it. The page will then determine if the input number is even or odd using JavaScript and display the result accordingly.
+    </p>
  
     <h2 class="subheader">Place form code below:</h2>
     <div id="output">
@@ -59,14 +61,9 @@
   <script src="js/main.js"></script>   
   <script>
 
-      function getEven(num){
-        if(num % 2 == 0){//even!
-            return("true");
-        }else{//odd!
-            return("false!");
-        }
-
-      }
+    function getEven(num) {
+      return num % 2 === 0; 
+    }
 
       const queryString = window.location.search;
       console.log(queryString);
@@ -79,7 +76,7 @@
             //alert(urlParams.get("input"));
             let myInput = urlParams.get("input");
             
-            if(getEven(myInput)){//even
+            if(getEven(myInput)) {//even
               myOutput += `<p>You typed <b>${myInput}</b> and it's an even number!</p>`;
             }else{//odd
               myOutput += `<p>You typed <b>${myInput}</b> and it's an odd number!</p>`;
